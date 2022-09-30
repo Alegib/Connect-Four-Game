@@ -128,11 +128,13 @@ def start
   puts "Enter player2 name: "
   player2.name = gets
 
+  display_board
+
   isEnded = false
 
   while isEnded == false
     if $places.length < 41
-      puts "It's your turn, " + player1.name.chomp.red + "! Insert the column number: "
+      puts "\nIt's your turn, " + player1.name.chomp.red + "! Insert the column number: "
 
       validator = true
 
@@ -158,7 +160,7 @@ def start
         break
       end
 
-      puts "It's your turn, " + player2.name.chomp.blue + "! Insert the column number: "
+      puts "\nIt's your turn, " + player2.name.chomp.blue + "! Insert the column number: "
       while validator == false
         begin
           positionP2 = gets.to_i
