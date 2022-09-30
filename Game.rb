@@ -20,8 +20,9 @@ def display_board()
 
 end
 
-
+# {1=>6}, {1=>3}, {1=>1}, {2=>4}, {2=>1}, {1=>7}, {1=>5}
 def winner(arrayPos)
+
   a = Array.new()
   b = Array.new()
 
@@ -39,57 +40,57 @@ def winner(arrayPos)
         oriz = 1
         vert = 1
         diag = 1
-        (0..4).each do |j|
-
-          if arrayPos.include? ({a[i] => (b[i]+j) })
+        (1..4).each do |j|
+          if arrayPos.include? ({a[i] => b[i]+j}) and
             oriz += 1
             if oriz == 4
               return true
             end
           else
-            oriz = 1
+            oriz = 0
           end
         end
         (1..4).to_a.each do |j|
-          if arrayPos.include? ({(a[i]+j) => b[i]})
+          if arrayPos.include? ({a[i]+j => b[i]})
             vert += 1
             if vert == 4
               return true
             end
           else
-            vert = 1
+            vert = 0
           end
         end
         (1..4).to_a.each do |j|
-          if arrayPos.include? ({(a[i]+j) => (b[i]+j)})
+          if arrayPos.include? ({a[i]+j => b[i]+j})
             diag += 1
             if diag == 4
               return true
             end
           else
-            diag = 1
-          end
-        end
-        diag = 1
-        (1..4).to_a.each do |j|
-          if arrayPos.include? ({(a[i]-j) => (b[i]+j)})
-            diag += 1
-            if diag == 4
-              return true
-            end
-          else
-            diag = 1
+            diag = 0
           end
         end
         diag = 1
         (1..4).to_a.each do |j|
-          if arrayPos.include? ({(a[i]+j) => (b[i]-j)})
+          if arrayPos.include? ({a[i]-j => b[i]+j})
             diag += 1
             if diag == 4
               return true
             end
           else
-            diag = 1
+            diag = 0
+          end
+        end
+        diag = 1
+        (1..4).to_a.each do |j|
+          if arrayPos.include? ({a[i]+j => b[i]-j})
+
+            diag += 1
+            if diag == 4
+              return true
+            end
+          else
+            diag = 0
           end
         end
       end
