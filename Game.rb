@@ -20,7 +20,6 @@ def display_board()
 
 end
 
-# {1=>6}, {1=>3}, {1=>1}, {2=>4}, {2=>1}, {1=>7}, {1=>5}
 def winner(arrayPos)
 
   a = Array.new()
@@ -165,7 +164,6 @@ def start
       @board[$places[-1].keys[0]][$places[-1].values[0]] = "X".red
 
       display_board
-      # sorted1 = plOneList.sort {|x,y| x.first <=> y.first }
       if winner(plOneList) == true
         puts "\n" + player1.name.chomp.red + " WINS!\n"
         isEnded = true
@@ -187,7 +185,6 @@ def start
       plTwoList.push($places[-1])
       @board[$places[-1].keys[0]][$places[-1].values[0]] = "O".blue
       display_board
-      # sorted2 = plTwoList.sort {|x,y| x.first <=> y.first }
 
       if winner(plTwoList) == true
         isEnded = true
