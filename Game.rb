@@ -80,18 +80,6 @@ def winner(arrayPos)
             diag = 0
           end
         end
-        diag = 1
-        (1..4).to_a.each do |j|
-          if arrayPos.include? ({a[i]+j => b[i]-j})
-
-            diag += 1
-            if diag == 4
-              return true
-            end
-          else
-            diag = 0
-          end
-        end
       end
     end
   end
