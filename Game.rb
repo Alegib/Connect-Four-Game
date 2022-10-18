@@ -40,7 +40,7 @@ def winner(arrayPos)
         vert = 1
         diag = 1
         (1..4).each do |j|
-          if arrayPos.include? ({a[i] => b[i]+j}) and
+          if arrayPos.include? ({a[i] => b[i]+j})
             oriz += 1
             if oriz == 4
               return true
@@ -153,8 +153,12 @@ def start
 
       @board[$places[-1].keys[0]][$places[-1].values[0]] = "X".red
 
+      # It's not necessary to sort plOneList and plTwoList, but I guess it makes the "winner" function a bit more efficient.
+
+      sort1 = plOneList.sort {|a, b| a.first <=> b.first}
+
       display_board
-      if winner(plOneList) == true
+      if winner(sort1) == true
         puts "\n" + player1.name.chomp.red + " WINS!\n"
         isEnded = true
         break
@@ -175,8 +179,9 @@ def start
       plTwoList.push($places[-1])
       @board[$places[-1].keys[0]][$places[-1].values[0]] = "O".blue
       display_board
+      sort2 = plTwoList.sort {|a, b| a.first <=> b.first}
 
-      if winner(plTwoList) == true
+      if winner(sort2) == true
         isEnded = true
         puts "\n" + player2.name.chomp.blue + " WINS!\n"
       end
